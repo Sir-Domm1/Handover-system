@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Comment Section</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'comments_html.css'%}">
+
+</head>
+<body>
+    <div class="post-container">
+      <h1 class="post">{{ publish.Notice }}</h1>
+      <p class="author">Posted by {{ publish.Notice_by }}</p>
+    </div>
+    <button type="button" class="button"><a href="{% url 'notice-display-page'%}"> Back</a></button>
+    <section class="comments">
+      <ul class="comment-list">
+        {% for x in feedback %}
+        <li class="comment">
+          <span class="username">{{ x.comment_by }}</span> -
+          <span class="comment-text">{{ x.remarks }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+  
+      {% if new_form %}
+      <h3>New Comment</h3>
+      <p>
+        <span class="username">{{ new_form.username }}</span> -
+        <span class="comment-text">{{ new_form.remarks }}</span>
+      </p>
+      {% endif %}
+  
+      <div class="new-comment">
+        <h2>Comment</h2>
+        
+        <form method="post">
+          {% csrf_token %}
+          {{ CommentForm.as_p }}
+          <button type="submit" class="button">Submit</button>
+        </form>
+
+      </div>
+    </section><br>
+    
+  </body>
+</html>

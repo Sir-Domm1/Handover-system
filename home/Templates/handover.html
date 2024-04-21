@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shift Handover</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'handover_html.css'%}">
+    
+</head>
+<body>
+    <h1>OR MINI-STORE HANDOVERS</h1>
+    <table border="1">
+        <tr>
+            <th>Shift</th>
+            <th>Handover From</th>
+            <th>Handover To</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Action</th>
+            
+        </tr>
+    
+
+    {%for x in incomplete_handovers%}
+    <tr>
+
+        <td>{{x.Shift}}</td>
+        <td>{{x.Handover_From}}</td>
+        <td>{{x.Handover_To}}</td>
+        <td>{{x.title}} <button type="button" class="button"> <a href="{% url 'specifics-page' pk=x.pk %}">View</a></button></td>
+        <td>{{x.Date}}</td>
+        
+        <td>
+            <form method="post" >
+                {% csrf_token %}
+                <input type="hidden" name="id" value="{{ x.id }}">
+                <input type="checkbox" name="completed" id="completed">
+                <label for="completed">Mark as Completed</label>
+                <button type="submit" class="button">Submit</button>
+            </form>
+        </td>
+    </tr>
+
+    {% endfor %}
+
+    </table><br><br>
+
+    <button type="button" class="button"> <a href="{%url 'home-page'%}">Back</a></button>
+</body>
+</html>

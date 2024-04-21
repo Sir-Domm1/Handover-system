@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Login</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'login_html.css'%}">
+
+</head>
+<body>
+
+    <div class="container">
+        {% for message in messages %}
+        <h4>{{message}}</h4>
+        {% endfor %}
+        <br>
+      
+        <form method="post">
+          {% csrf_token %}  
+          <p>Username:</p>
+          <input type="text" name="username"> <br><br>
+      
+          <p>Password:</p>
+          <input type="password" name="password"> <br><br>
+      
+          <button type="submit">Submit</button><br><br>
+      
+          <p1>Already have an account?</p1><br><br>
+          <button type="button" class="button">
+            <a href="{% url 'signup' %}">CREATE ACCOUNT</a>
+          </button><br><br>
+      
+          <button type="button" class="button">
+            <a href="{% url 'reset_password' %}">Forgot Password?</a>
+          </button>
+ 
+        </form>
+      </div>
+      
+</body>
+</html>

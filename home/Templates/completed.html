@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COMPLETED HANDOVERS</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'completed_html.css'%}">
+    
+</head>
+<body>
+    <h1>OR MINI-STORE COMPLETED HANDOVERS</h1>
+
+    <table border="1">
+        <tr>
+            <th>Shift</th>
+            <th>Handover From</th>
+            <th>Handover To</th>
+            <th>Title</th>
+            <th>Date</th>            
+        </tr>
+    
+
+    {% for x in display_completed %}
+    <tr>
+
+        <td>{{x.Shift}}</td>
+        <td>{{x.Handover_From}}</td>
+        <td>{{x.Handover_To}}</td>
+        <td>{{x.title}} <button type="button" class="button"> <a href="{% url 'specifics-page' pk=x.pk %}">View</a></button></td>
+        <td>{{x.Date}}</td>
+
+    </tr>
+    {% endfor %}
+
+     </table> <br> <br>
+
+     <button type="button" class="button" > <a href="{%url 'home-page'%}">Back</a></button>

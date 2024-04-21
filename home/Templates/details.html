@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Handover details</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'details_html.css'%}">
+</head>
+<body>
+<div class="container">
+    <h3>Title: {{Handover_details.title}}</h3>  
+    <h3>Tasks in progress:</h3>
+    <p>{{Handover_details.Tasks_In_Progress}}</p>
+    <h3>Important Notes:</h3>
+    <p>{{Handover_details.Important_Notes}}</p><br>
+
+</div>
+
+<div class="button-container">
+    <button type="button"><a href="{% url 'handover-page' %}">Handovers</a></button>
+    <button type="button"><a href="{% url 'completed-handovers' %}">Completed Handovers</a></button>
+</div>
+
+</body>
+</html>

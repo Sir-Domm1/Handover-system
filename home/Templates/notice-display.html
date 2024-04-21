@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notices</title>
+
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'notice-display_html.css'%}">
+    
+</head>
+<body>
+    <header>
+        <h1>Notices</h1>
+    </header><br>
+    <button type="button" class="back"> <a href="{%url 'home-page'%}">Back</a></button>  
+    <main>
+        {% if All_display %}
+        {% for notice in All_display %}
+        <div class="notice">
+            <h2>{{ notice.Title }}</h2>
+            <p class="author">by {{ notice.Notice_by }}</p>
+            <p>{{ notice.Notice }}</p>
+            <p class="date">{{ notice.Date }}</p>
+            
+            <a href="{% url 'comment-page' pk=notice.pk %}" class="reply-link">Reply</a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p class="no-posts">No posts yet.</p>
+        {% endif %}
+    </main>
+</body>
+
+</html>
