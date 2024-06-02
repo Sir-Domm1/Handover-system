@@ -45,7 +45,7 @@ def Signup(request):
                 user.save()
                 return redirect('Login')
         else:
-            message.info(request,'The passwords do not match, input correct passwords')
+            messages.info(request,'The passwords do not match, input correct passwords')
             return redirect('signup')
 
     return render(request, 'signup.html')

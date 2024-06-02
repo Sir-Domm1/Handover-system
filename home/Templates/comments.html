@@ -9,22 +9,31 @@
     <link rel="stylesheet" href="{%static 'comments_html.css'%}">
 
 </head>
+
 <body>
+  <button type="button" class="button"><a href="{% url 'notice-display-page'%}"> Back</a></button>
     <div class="post-container">
       <h1 class="post">{{ publish.Notice }}</h1>
       <p class="author">Posted by {{ publish.Notice_by }}</p>
     </div>
-    <button type="button" class="button"><a href="{% url 'notice-display-page'%}"> Back</a></button>
-    <section class="comments">
-      <ul class="comment-list">
-        {% for x in feedback %}
-        <li class="comment">
-          <span class="username">{{ x.comment_by }}</span> -
-          <span class="comment-text">{{ x.remarks }}</span>
-        </li>
-        {% endfor %}
-      </ul>
-  
+    
+    
+    <div class="comment-container">
+      {% for x in feedback %}
+      <div class="comment-card">
+        <div class="comment-header">
+          <span class="username">{{ x.comment_by }}</span>
+          <span class="comment-date">{{ x.date }}</span>
+        </div>
+        <div class="comment-body">
+          <p>{{ x.remarks }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    
+
+
       {% if new_form %}
       <h3>New Comment</h3>
       <p>

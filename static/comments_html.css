@@ -8,11 +8,15 @@ body {
 }
 
 .post-container {
+    width: 50%;
     background-color: #fff;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: 23%;
+    font-size: medium;
+    font-weight: bold;
 }
 
 .post {
@@ -25,31 +29,13 @@ body {
     color: #777;
 }
 
-.comments {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
 
-.comment-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-.comment {
-    margin-bottom: 20px;
-    border-bottom: 1px solid #ddd; /* Add separation between comments */
-    padding-bottom: 15px; /* Add space between each comment */
-}
 
 .username {
     font-weight: bold;
     color: #007bff; /* Change color as per your preference */
 }
 
-.comment-text {
-    margin-left: 5px;
-}
 
 .new-comment {
     background-color: #fff;
@@ -57,7 +43,50 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
+    width: 50%;
+    margin-left: 23%;
+    
 }
+
+/* Container for comment cards */
+.comment-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Spacing between comment cards */
+  }
+  
+  /* Individual comment card */
+  .comment-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 50%;
+    margin-left: 23%;
+  }
+  
+  /* Comment header */
+  .comment-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    
+  }
+  
+  .username {
+    font-weight: bold;
+  }
+  
+  .comment-date {
+    color: #666;
+  }
+  
+  /* Comment body */
+  .comment-body p {
+    margin: 0; /* Remove default margin for paragraphs */
+  }
+  
 
 h2 {
     font-size: 20px;

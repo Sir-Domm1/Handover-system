@@ -117,7 +117,7 @@ input[type="text"], textarea {
     max-width: 600px;
     margin: 50px 20px;
     padding: 50px;
-    background-color: rgba(249, 249, 249, 0.9);
+    background-image: url('images/w.jpg');
     border-radius: 8px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     border: 2px solid #007bff;

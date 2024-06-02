@@ -37,3 +37,4 @@ class Comment(models.Model):
     notice=models.ForeignKey(Notices, on_delete=models.CASCADE)
     comment_by=models.ForeignKey(User, on_delete=models.CASCADE,)
     remarks=models.TextField()
+    date=models.DateTimeField(auto_now_add=True)
