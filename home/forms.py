@@ -1,11 +1,12 @@
 from django import forms
 from.models import Handover, Notices, Comment
 
+
 class handoverForm(forms.ModelForm):
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
         self.fields['Shift'].widget.attrs.update({"class":'form-control'})
-        self.fields['Handover_From'].widget.attrs.update({"class":'form-control'})
+        
         self.fields['Handover_To'].widget.attrs.update({"class":'form-control'})
         self.fields['title'].widget.attrs.update({"class":'form-control-1'})
         #self.fields['Handover_To'].widget.attrs.update({"class":'form-control'})
@@ -13,7 +14,7 @@ class handoverForm(forms.ModelForm):
 
     class Meta:
         model=Handover
-        fields= ['Shift','Handover_From','Handover_To','title','Tasks_In_Progress','Important_Notes']
+        exclude = ['Handover_From', 'completed_by', 'Completed_task', 'Date'] 
 
 
 
@@ -24,10 +25,12 @@ class NoticeForm(forms.ModelForm):
             field.widget.attrs.update({'class': 'Notice-form'})
     class Meta:
         model=Notices
-        fields='__all__'
+        exclude = ['Notice_by'] 
 
 class CommentForm(forms.ModelForm):
     class Meta:
         model=Comment
-        fields=['comment_by','remarks']
+        fields=['remarks']
+
+
         

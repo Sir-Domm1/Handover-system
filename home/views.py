@@ -10,7 +10,9 @@ def Home(request):
     if request.method=='POST':
         form=handoverForm(request.POST)
         if form.is_valid():
-            form.save()
+            deliver=form.save(commit=False)
+            deliver.Handover_From=request.user
+            deliver.save()
             return redirect('handover-page')
     else:
         form=handoverForm()
@@ -20,7 +22,7 @@ def Home(request):
 @login_required
 def Handover_list(request):
     display=Handover.objects.all()
-    incomplete_handovers = Handover.objects.filter(Completed_task=False)
+    incomplete_handovers = Handover.objects.filter(Completed_task=False).order_by('-id')
     if request.method=='POST':
         handover_id=request.POST.get('id')
         turnover= Handover.objects.get(id=handover_id)
@@ -36,7 +38,7 @@ def Handover_list(request):
 #create views for completed handover only.
 @login_required
 def Completed_handovers(request):
-    display_completed=Handover.objects.filter(Completed_task=True)
+    display_completed=Handover.objects.filter(Completed_task=True).order_by('-id')
     return render(request, 'completed.html',{'display_completed': display_completed})
 
 @login_required
@@ -45,7 +47,9 @@ def Notice(request):
     if request.method=='POST':
         form= NoticeForm(request.POST)
         if form.is_valid():
-            form.save()
+            create = form.save(commit=False)
+            create.Notice_by = request.user
+            create.save()
             return redirect('notice-display-page')
     else:
         form=NoticeForm()
