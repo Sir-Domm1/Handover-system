@@ -1,0 +1,9 @@
+{
+  "home/Tests/Test_url.py::TestUrls::test_home_url_is_resolved": true,
+  "tests/test_views.py::TestViews::test_Home_view": true,
+  "tests/test_views.py::TestViews::test_home_view_post_invalid_form": true,
+  "tests/test_views.py::TestViews::test_home_view_post_valid_form": true,
+  "tests/test_views.py::test_Home_view_get": true,
+  "tests/test_views.py::test_Home_view_post_valid": true,
+  "tests/test_views.py::test_Home_view_post_invalid": true
+}

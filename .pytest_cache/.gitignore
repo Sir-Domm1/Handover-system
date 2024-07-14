@@ -1,0 +1,4 @@
+# Created by pytest automatically.
+[pytest]
+Django_SETTINGS_MODULE=Handover.settings
+python files=
